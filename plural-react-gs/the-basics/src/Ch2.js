@@ -39,6 +39,30 @@ function PartB() {
   );
 }
 
+// Part c of the app.
+function PartCDisp(props) {
+  return <p>{props.message}</p>;
+}
+
+function PartCBut(props) {
+  const handleIncrement = () => props.update(props.value);
+  return <button onClick={handleIncrement}>+{props.value}</button>;
+}
+function PartC() {
+  const [counter, setCounter] = useState(10);
+  const handleClick = newUpdate => setCounter(counter + newUpdate);
+  return (
+    <div>
+      <p>c. Component Reusability</p>
+      <PartCDisp message={counter} />
+      <PartCBut update={handleClick} value={1} />
+      <PartCBut update={handleClick} value={5} />
+      <PartCBut update={handleClick} value={10} />
+      <PartCBut update={handleClick} value={100} />
+    </div>
+  );
+}
+
 //Global app.
 function Ch2() {
   return (
@@ -46,6 +70,7 @@ function Ch2() {
       <h2>Chapter 2: The Basics</h2>
       <PartA />
       <PartB />
+      <PartC />
     </div>
   );
 }
